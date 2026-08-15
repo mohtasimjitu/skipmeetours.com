@@ -1,335 +1,1255 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Developer Portfolio</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Skip Mee Tours & Travels | Flights, Visa, Tours & Student Consultancy Malaysia</title>
+<meta name="description" content="Skip Mee Tours & Travels provides air tickets, visa processing, hotel bookings, tour packages, airport transfers, student consultancy, and Malaysia ↔ Bangladesh courier services.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%E2%9C%88%EF%B8%8F%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* ============ TOKENS ============ */
+:root{
+  --navy-950:#060f22;
+  --navy-900:#0a1b38;
+  --navy-800:#0f2749;
+  --navy-700:#16396b;
+  --navy-600:#204b85;
+  --sky:#46b8e8;
+  --turquoise:#1fcfc0;
+  --gold:#e3b65c;
+  --gold-light:#f2d793;
+  --ivory:#f5f8fb;
+  --white:#ffffff;
+  --ink:#0b1930;
+  --muted:#7c93b3;
+  --muted-dark:#4a6488;
+  --glass-bg:rgba(255,255,255,0.06);
+  --glass-bg-strong:rgba(255,255,255,0.1);
+  --glass-border:rgba(255,255,255,0.14);
+  --shadow-soft:0 20px 60px -20px rgba(6,15,34,0.45);
+  --shadow-lift:0 30px 80px -25px rgba(6,15,34,0.55);
+  --radius-lg:28px;
+  --radius-md:18px;
+  --radius-sm:12px;
+  --ease:cubic-bezier(.22,.7,.2,1);
+  --font-display:'Fraunces', serif;
+  --font-body:'Inter', sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:var(--font-body);
+  background:var(--ivory);
+  color:var(--ink);
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+img{max-width:100%;display:block;}
+a{color:inherit;text-decoration:none;}
+ul{list-style:none;}
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit;}
+input,select,textarea{font-family:inherit;}
+section{scroll-margin-top:88px;}
+.container{width:100%;max-width:1240px;margin:0 auto;padding:0 24px;}
+.skip-link{position:absolute;top:-60px;left:16px;background:var(--gold);color:var(--navy-950);padding:10px 18px;border-radius:8px;z-index:9999;transition:top .2s var(--ease);font-weight:600;}
+.skip-link:focus{top:16px;}
+:focus-visible{outline:2px solid var(--turquoise);outline-offset:3px;}
+
+.eyebrow{
+  display:inline-flex;align-items:center;gap:10px;
+  font-size:12.5px;letter-spacing:.22em;text-transform:uppercase;
+  font-weight:600;color:var(--gold);margin-bottom:16px;
+}
+.eyebrow::before{content:'';width:26px;height:1px;background:var(--gold);}
+.eyebrow.center{justify-content:center;}
+.eyebrow.center::before{display:none;}
+.eyebrow.dark{color:var(--turquoise);}
+
+h1,h2,h3,h4{font-family:var(--font-display);font-weight:600;color:var(--navy-950);line-height:1.12;letter-spacing:-.01em;}
+.section-title{font-size:clamp(28px,4vw,44px);margin-bottom:14px;}
+.section-title em{font-style:italic;font-weight:500;color:var(--turquoise);}
+.section-sub{max-width:560px;color:var(--muted-dark);font-size:16.5px;}
+.section-head{margin-bottom:56px;}
+.section-head.center{text-align:center;margin-left:auto;margin-right:auto;}
+.section-head.center .section-sub{margin-left:auto;margin-right:auto;}
+.section-pad{padding:110px 0;}
+@media(max-width:768px){.section-pad{padding:72px 0;} .section-head{margin-bottom:38px;}}
+
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  padding:16px 30px;border-radius:100px;font-weight:600;font-size:15px;
+  transition:transform .35s var(--ease), box-shadow .35s var(--ease), background .3s var(--ease);
+  position:relative;overflow:hidden;white-space:nowrap;
+}
+.btn:active{transform:scale(.97);}
+.btn-gold{background:linear-gradient(135deg,var(--gold-light),var(--gold));color:var(--navy-950);box-shadow:0 14px 34px -10px rgba(227,182,92,.55);}
+.btn-gold:hover{transform:translateY(-3px);box-shadow:0 20px 44px -12px rgba(227,182,92,.65);}
+.btn-glass{background:var(--glass-bg);border:1px solid var(--glass-border);color:var(--white);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);}
+.btn-glass:hover{background:var(--glass-bg-strong);transform:translateY(-3px);}
+.btn-navy{background:var(--navy-900);color:var(--white);}
+.btn-navy:hover{background:var(--navy-800);transform:translateY(-3px);}
+.btn-outline{border:1.5px solid var(--navy-700);color:var(--navy-900);}
+.btn-outline:hover{background:var(--navy-900);color:#fff;}
+.btn-sm{padding:11px 20px;font-size:13.5px;}
+.btn::after{content:'';position:absolute;inset:0;border-radius:inherit;background:radial-gradient(circle at var(--x,50%) var(--y,50%),rgba(255,255,255,.35),transparent 60%);opacity:0;transition:opacity .3s;}
+.btn:hover::after{opacity:1;}
+
+.glass-card{
+  background:var(--glass-bg);
+  border:1px solid var(--glass-border);
+  backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
+  border-radius:var(--radius-lg);
+}
+
+.ph-img{position:relative;overflow:hidden;background:#0e2340;}
+.ph-img img{width:100%;height:100%;object-fit:cover;transition:transform .9s var(--ease);}
+.ph-img::after{content:'';position:absolute;inset:0;background:linear-gradient(155deg,rgba(10,27,56,.72),rgba(31,207,192,.28) 55%,rgba(227,182,92,.22));mix-blend-mode:multiply;}
+.ph-img.duotone-dark::after{background:linear-gradient(180deg,rgba(6,15,34,.15),rgba(6,15,34,.92));mix-blend-mode:normal;}
+
+.reveal{opacity:0;transform:translateY(36px);transition:opacity .9s var(--ease),transform .9s var(--ease);}
+.reveal.in-view{opacity:1;transform:translateY(0);}
+.reveal-scale{opacity:0;transform:scale(.94);transition:opacity .9s var(--ease),transform .9s var(--ease);}
+.reveal-scale.in-view{opacity:1;transform:scale(1);}
+.stagger .reveal:nth-child(1){transition-delay:.05s;}
+.stagger .reveal:nth-child(2){transition-delay:.15s;}
+.stagger .reveal:nth-child(3){transition-delay:.25s;}
+.stagger .reveal:nth-child(4){transition-delay:.35s;}
+.stagger .reveal:nth-child(5){transition-delay:.45s;}
+.stagger .reveal:nth-child(6){transition-delay:.55s;}
+.stagger .reveal:nth-child(7){transition-delay:.65s;}
+.stagger .reveal:nth-child(8){transition-delay:.75s;}
+
+@media(prefers-reduced-motion:reduce){
+  *{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;scroll-behavior:auto!important;}
+}
+
+/* ============ NAVBAR ============ */
+.navbar{
+  position:fixed;top:0;left:0;right:0;z-index:1000;
+  padding:20px 0;transition:padding .4s var(--ease), background .4s var(--ease), box-shadow .4s var(--ease);
+}
+.navbar .container{display:flex;align-items:center;justify-content:space-between;}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;width:100%;background:rgba(10,27,56,.28);border:1px solid rgba(255,255,255,.1);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-radius:100px;padding:10px 12px 10px 22px;transition:all .4s var(--ease);}
+.navbar.scrolled{padding:12px 0;}
+.navbar.scrolled .nav-inner{background:rgba(6,15,34,.82);box-shadow:var(--shadow-soft);}
+.logo{display:flex;align-items:center;gap:10px;font-family:var(--font-display);font-weight:600;font-size:19px;color:#fff;letter-spacing:.01em;}
+.logo .plane-mark{width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,var(--turquoise),var(--sky));display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.logo .plane-mark svg{width:17px;height:17px;fill:var(--navy-950);}
+.logo span em{font-style:italic;color:var(--gold-light);font-weight:500;}
+.nav-links{display:flex;align-items:center;gap:2px;}
+.nav-links a{color:rgba(255,255,255,.82);font-size:14.5px;font-weight:500;padding:10px 16px;border-radius:100px;transition:all .3s var(--ease);position:relative;}
+.nav-links a:hover{color:#fff;background:rgba(255,255,255,.08);}
+.nav-cta{display:flex;align-items:center;gap:10px;}
+.nav-toggle{display:none;width:42px;height:42px;border-radius:50%;background:rgba(255,255,255,.08);align-items:center;justify-content:center;color:#fff;}
+.nav-toggle svg{width:20px;height:20px;}
+.mobile-menu{position:fixed;inset:0;background:var(--navy-950);z-index:1100;display:flex;flex-direction:column;padding:26px 26px 40px;transform:translateY(-100%);transition:transform .5s var(--ease);opacity:0;pointer-events:none;}
+.mobile-menu.open{transform:translateY(0);opacity:1;pointer-events:auto;}
+.mobile-menu-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:50px;}
+.mobile-menu-close{width:42px;height:42px;border-radius:50%;background:rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;color:#fff;}
+.mobile-menu a{display:block;font-family:var(--font-display);font-size:30px;color:#fff;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.08);}
+.mobile-menu .btn{margin-top:30px;width:100%;}
+
+@media(max-width:980px){
+  .nav-links,.nav-cta .btn-outline-nav{display:none;}
+  .nav-toggle{display:flex;}
+  .nav-inner{padding:8px 8px 8px 18px;}
+}
+
+/* ============ HERO ============ */
+.hero{
+  position:relative;min-height:100vh;display:flex;align-items:center;
+  background:radial-gradient(ellipse 90% 60% at 20% 0%, rgba(31,207,192,.20), transparent 60%),
+             radial-gradient(ellipse 70% 60% at 90% 20%, rgba(227,182,92,.14), transparent 55%),
+             linear-gradient(165deg,var(--navy-950) 0%,var(--navy-900) 55%,#0c2140 100%);
+  overflow:hidden;padding:150px 0 90px;
+}
+.hero::before{ /* grain */
+  content:'';position:absolute;inset:0;opacity:.35;pointer-events:none;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.35'/%3E%3C/svg%3E");
+}
+.hero-bg-photo{position:absolute;inset:0;z-index:0;opacity:.28;}
+.hero-flightpath{position:absolute;inset:0;z-index:1;pointer-events:none;}
+.hero-flightpath svg{width:100%;height:100%;}
+.flight-line{fill:none;stroke:rgba(255,255,255,.28);stroke-width:1.4;stroke-dasharray:2 10;stroke-linecap:round;}
+.flight-dot{fill:var(--gold-light);}
+.plane-icon{width:22px;fill:var(--gold-light);filter:drop-shadow(0 0 8px rgba(227,182,92,.7));offset-path:path('M60,420 C 260,120 560,560 900,180');offset-rotate:auto;animation:flyPath 11s linear infinite;}
+@keyframes flyPath{0%{offset-distance:0%;opacity:0;}5%{opacity:1;}95%{opacity:1;}100%{offset-distance:100%;opacity:0;}}
+.hero-particles{position:absolute;inset:0;z-index:1;pointer-events:none;overflow:hidden;}
+.particle{position:absolute;border-radius:50%;background:rgba(255,255,255,.5);pointer-events:none;animation:drift linear infinite;}
+@keyframes drift{from{transform:translate(0,0);opacity:0;}10%{opacity:.7;}90%{opacity:.5;}to{transform:translate(-140px,-260px);opacity:0;}}
+
+.hero-grid{position:relative;z-index:2;display:grid;grid-template-columns:1fr;gap:0;}
+.hero-content{max-width:760px;}
+.hero-content h1{font-size:clamp(40px,7vw,84px);color:#fff;margin-bottom:22px;}
+.hero-content h1 em{font-style:italic;font-weight:500;background:linear-gradient(100deg,var(--gold-light),var(--turquoise));-webkit-background-clip:text;background-clip:text;color:transparent;}
+.hero-sub{color:rgba(255,255,255,.72);font-size:18px;max-width:520px;margin-bottom:38px;}
+.hero-ctas{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:64px;}
+
+.hero-panel{
+  position:relative;z-index:2;margin-top:10px;
+  background:var(--glass-bg-strong);border:1px solid var(--glass-border);
+  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  border-radius:var(--radius-lg);padding:22px;box-shadow:var(--shadow-lift);
+}
+.hero-panel-label{color:rgba(255,255,255,.55);font-size:12.5px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;margin-bottom:16px;padding-left:6px;}
+.hero-panel-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;}
+.hero-panel-item{
+  display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center;
+  padding:18px 8px;border-radius:16px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);
+  transition:all .35s var(--ease);
+}
+.hero-panel-item:hover{background:rgba(255,255,255,.11);transform:translateY(-5px);border-color:rgba(227,182,92,.5);}
+.hero-panel-item svg{width:24px;height:24px;stroke:var(--gold-light);}
+.hero-panel-item span{color:#fff;font-size:12.5px;font-weight:600;}
+@media(max-width:900px){.hero-panel-grid{grid-template-columns:repeat(3,1fr);}}
+@media(max-width:520px){.hero-panel-grid{grid-template-columns:repeat(2,1fr);}}
+
+.trust-strip{position:relative;z-index:2;margin-top:56px;display:grid;grid-template-columns:repeat(4,1fr);gap:24px;padding-top:40px;border-top:1px solid rgba(255,255,255,.1);}
+.trust-item{text-align:left;}
+.trust-num{font-family:var(--font-display);font-size:clamp(26px,3.4vw,38px);color:#fff;font-weight:600;}
+.trust-num em{color:var(--turquoise);font-style:normal;}
+.trust-label{color:rgba(255,255,255,.55);font-size:13px;margin-top:4px;letter-spacing:.02em;}
+@media(max-width:768px){.trust-strip{grid-template-columns:repeat(2,1fr);}}
+
+/* ============ SERVICES ============ */
+.services-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;}
+@media(max-width:1080px){.services-grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:560px){.services-grid{grid-template-columns:1fr;}}
+.service-card{
+  background:#fff;border:1px solid #e7edf5;border-radius:var(--radius-md);padding:32px 26px;
+  transition:transform .45s var(--ease), box-shadow .45s var(--ease), border-color .45s var(--ease);
+  position:relative;overflow:hidden;
+}
+.service-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--turquoise),var(--gold));transform:scaleX(0);transform-origin:left;transition:transform .5s var(--ease);}
+.service-card:hover{transform:translateY(-8px);box-shadow:var(--shadow-soft);border-color:transparent;}
+.service-card:hover::before{transform:scaleX(1);}
+.service-icon{width:54px;height:54px;border-radius:16px;background:linear-gradient(135deg,var(--navy-900),var(--navy-700));display:flex;align-items:center;justify-content:center;margin-bottom:22px;transition:transform .5s var(--ease);}
+.service-card:hover .service-icon{transform:rotate(-8deg) scale(1.08);}
+.service-icon svg{width:26px;height:26px;stroke:var(--gold-light);}
+.service-card h3{font-size:19px;margin-bottom:10px;}
+.service-card p{color:var(--muted-dark);font-size:14.5px;margin-bottom:18px;}
+.service-link{display:inline-flex;align-items:center;gap:6px;font-size:13.5px;font-weight:700;color:var(--navy-900);letter-spacing:.02em;}
+.service-link svg{width:14px;height:14px;transition:transform .3s var(--ease);}
+.service-card:hover .service-link svg{transform:translateX(4px);}
+
+/* ============ DESTINATIONS ============ */
+.dest-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
+@media(max-width:1080px){.dest-grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:560px){.dest-grid{grid-template-columns:1fr;}}
+.dest-card{position:relative;border-radius:var(--radius-md);overflow:hidden;height:360px;box-shadow:var(--shadow-soft);}
+.dest-card .ph-img{position:absolute;inset:0;}
+.dest-card .ph-img img{width:100%;height:100%;}
+.dest-card:hover .ph-img img{transform:scale(1.12);}
+.dest-body{position:absolute;left:0;right:0;bottom:0;padding:24px;z-index:2;}
+.dest-flag{font-size:26px;margin-bottom:6px;display:block;}
+.dest-card h3{color:#fff;font-size:23px;margin-bottom:6px;}
+.dest-card p{color:rgba(255,255,255,.72);font-size:13.5px;margin-bottom:16px;max-height:0;opacity:0;overflow:hidden;transition:max-height .5s var(--ease),opacity .5s var(--ease),margin .5s var(--ease);}
+.dest-card:hover p{max-height:70px;opacity:1;}
+.dest-explore{display:inline-flex;align-items:center;gap:8px;color:#fff;font-size:13px;font-weight:600;border-bottom:1px solid rgba(255,255,255,.5);padding-bottom:4px;transition:gap .3s var(--ease),border-color .3s;}
+.dest-card:hover .dest-explore{gap:12px;border-color:var(--gold-light);color:var(--gold-light);}
+
+/* ============ TOURIST SPOTS ============ */
+.spots-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:32px;}
+.spot-tab{padding:11px 22px;border-radius:100px;font-size:14px;font-weight:600;border:1.5px solid #dde6f1;color:var(--muted-dark);transition:all .3s var(--ease);}
+.spot-tab.active,.spot-tab:hover{background:var(--navy-950);color:#fff;border-color:var(--navy-950);}
+.spots-viewport{position:relative;}
+.spots-track-wrap{display:none;}
+.spots-track-wrap.active{display:block;}
+.spots-track{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:14px;scrollbar-width:none;}
+.spots-track::-webkit-scrollbar{display:none;}
+.spot-card{scroll-snap-align:start;flex:0 0 260px;height:330px;border-radius:20px;position:relative;overflow:hidden;box-shadow:var(--shadow-soft);}
+.spot-card .ph-img{position:absolute;inset:0;}
+.spot-card .ph-img img{width:100%;height:100%;}
+.spot-card:hover .ph-img img{transform:scale(1.1);}
+.spot-card-label{position:absolute;left:18px;right:18px;bottom:18px;z-index:2;}
+.spot-card-label h4{color:#fff;font-size:17px;font-family:var(--font-display);}
+.spot-card-label span{color:var(--gold-light);font-size:12px;letter-spacing:.08em;text-transform:uppercase;font-weight:600;}
+.spots-nav{display:flex;gap:10px;justify-content:flex-end;margin-top:16px;}
+.spots-nav button{width:44px;height:44px;border-radius:50%;border:1.5px solid #dde6f1;display:flex;align-items:center;justify-content:center;transition:all .3s var(--ease);}
+.spots-nav button:hover{background:var(--navy-950);border-color:var(--navy-950);color:#fff;}
+.spots-nav svg{width:18px;height:18px;}
+
+/* ============ STUDENT CONSULTANCY ============ */
+.student-section{background:linear-gradient(180deg,var(--navy-950),var(--navy-900));position:relative;overflow:hidden;}
+.student-section .section-sub,.student-section p{color:rgba(255,255,255,.68);}
+.student-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:60px;align-items:center;}
+@media(max-width:940px){.student-grid{grid-template-columns:1fr;gap:44px;}}
+.student-section h2{color:#fff;}
+.student-check-list{display:grid;grid-template-columns:1fr 1fr;gap:14px 22px;margin:32px 0 38px;}
+@media(max-width:520px){.student-check-list{grid-template-columns:1fr;}}
+.student-check-list li{display:flex;align-items:flex-start;gap:10px;color:rgba(255,255,255,.85);font-size:14.5px;}
+.student-check-list svg{width:19px;height:19px;flex-shrink:0;margin-top:2px;stroke:var(--turquoise);}
+.student-visual{position:relative;height:480px;border-radius:var(--radius-lg);overflow:hidden;}
+.student-visual .ph-img{position:absolute;inset:0;}
+.student-visual .ph-img img{width:100%;height:100%;}
+.student-float-card{position:absolute;background:var(--glass-bg-strong);border:1px solid var(--glass-border);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-radius:18px;padding:16px 18px;display:flex;align-items:center;gap:12px;box-shadow:var(--shadow-lift);animation:floatY 5s ease-in-out infinite;}
+.student-float-card svg{width:26px;height:26px;stroke:var(--gold-light);flex-shrink:0;}
+.student-float-card b{display:block;color:#fff;font-size:15px;}
+.student-float-card span{color:rgba(255,255,255,.6);font-size:12px;}
+.sf-1{top:8%;left:-6%;animation-delay:0s;}
+.sf-2{bottom:10%;right:-6%;animation-delay:1.2s;}
+@keyframes floatY{0%,100%{transform:translateY(0);}50%{transform:translateY(-14px);}}
+@media(max-width:640px){.student-float-card{position:static;margin:14px auto 0;animation:none;width:fit-content;}.sf-2{margin-top:10px;}}
+
+/* ============ WHY CHOOSE US ============ */
+.why-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:18px;}
+@media(max-width:1080px){.why-grid{grid-template-columns:repeat(3,1fr);}}
+@media(max-width:640px){.why-grid{grid-template-columns:repeat(2,1fr);}}
+.why-card{background:#fff;border-radius:var(--radius-md);padding:30px 22px;text-align:center;border:1px solid #e7edf5;transition:all .4s var(--ease);}
+.why-card:hover{transform:translateY(-8px);box-shadow:var(--shadow-soft);}
+.why-icon{width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,var(--gold-light),var(--gold));display:flex;align-items:center;justify-content:center;margin:0 auto 18px;}
+.why-icon svg{width:26px;height:26px;stroke:var(--navy-950);}
+.why-card b{display:block;font-family:var(--font-display);font-size:18px;color:var(--navy-950);margin-bottom:6px;}
+.why-card span{font-size:13px;color:var(--muted-dark);}
+
+/* ============ HOW IT WORKS ============ */
+.steps-wrap{position:relative;}
+.steps-line{position:absolute;top:44px;left:6%;right:6%;height:2px;background:#dde6f1;overflow:hidden;display:none;}
+.steps-line-fill{height:100%;width:0;background:linear-gradient(90deg,var(--turquoise),var(--gold));transition:width 1.4s var(--ease);}
+@media(min-width:900px){.steps-line{display:block;}}
+.steps-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:34px;position:relative;z-index:2;}
+@media(max-width:900px){.steps-grid{grid-template-columns:1fr 1fr;}}
+@media(max-width:560px){.steps-grid{grid-template-columns:1fr;}}
+.step-item{text-align:center;}
+.step-stamp{
+  width:88px;height:88px;border-radius:50%;margin:0 auto 22px;position:relative;
+  border:2px dashed var(--navy-700);display:flex;align-items:center;justify-content:center;
+  transform:rotate(-6deg);background:#fff;transition:transform .5s var(--ease), border-color .5s var(--ease);
+}
+.step-item:nth-child(even) .step-stamp{transform:rotate(5deg);}
+.step-item:hover .step-stamp{transform:rotate(0deg) scale(1.06);border-color:var(--gold);}
+.step-stamp span{font-family:var(--font-display);font-size:26px;font-weight:600;color:var(--navy-900);}
+.step-item h3{font-size:18px;margin-bottom:8px;}
+.step-item p{color:var(--muted-dark);font-size:14px;max-width:220px;margin:0 auto;}
+
+/* ============ TESTIMONIALS ============ */
+.testi-section{background:linear-gradient(180deg,#0d2140,var(--navy-950));position:relative;}
+.testi-section .section-head h2{color:#fff;}
+.testi-track{display:flex;gap:22px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:10px;scrollbar-width:none;}
+.testi-track::-webkit-scrollbar{display:none;}
+.testi-card{scroll-snap-align:start;flex:0 0 min(380px,84vw);background:var(--glass-bg);border:1px solid var(--glass-border);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-radius:var(--radius-md);padding:30px;display:flex;flex-direction:column;}
+.testi-stars{display:flex;gap:3px;margin-bottom:16px;}
+.testi-stars svg{width:16px;height:16px;fill:var(--gold);}
+.testi-card p{color:rgba(255,255,255,.85);font-size:15px;margin-bottom:22px;flex:1;}
+.testi-person{display:flex;align-items:center;gap:12px;}
+.testi-avatar{width:46px;height:46px;border-radius:50%;background:linear-gradient(135deg,var(--turquoise),var(--sky));display:flex;align-items:center;justify-content:center;color:var(--navy-950);font-weight:700;flex-shrink:0;}
+.testi-person b{color:#fff;font-size:14.5px;display:block;}
+.testi-person span{color:rgba(255,255,255,.5);font-size:12.5px;}
+.testi-dots{display:flex;gap:8px;justify-content:center;margin-top:28px;}
+.testi-dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.25);transition:all .3s var(--ease);}
+.testi-dot.active{background:var(--gold);width:24px;border-radius:6px;}
+
+/* ============ EMERGENCY ============ */
+.emergency{position:relative;margin:0 auto;padding:0 24px;transform:translateY(0);}
+.emergency-inner{
+  max-width:1192px;margin:0 auto;border-radius:var(--radius-lg);
+  background:linear-gradient(120deg,var(--navy-950),#241333 130%);
+  padding:44px 44px;display:flex;align-items:center;justify-content:space-between;gap:30px;flex-wrap:wrap;
+  box-shadow:var(--shadow-lift);position:relative;overflow:hidden;border:1px solid rgba(255,255,255,.08);
+}
+.emergency-inner::before{content:'';position:absolute;width:340px;height:340px;background:radial-gradient(circle,rgba(227,182,92,.28),transparent 70%);top:-140px;right:-80px;}
+.emergency-text h3{color:#fff;font-size:26px;margin-bottom:8px;display:flex;align-items:center;gap:10px;}
+.pulse-dot{width:10px;height:10px;border-radius:50%;background:#ff5c5c;position:relative;flex-shrink:0;}
+.pulse-dot::after{content:'';position:absolute;inset:0;border-radius:50%;background:#ff5c5c;animation:pulse 1.6s ease-out infinite;}
+@keyframes pulse{0%{transform:scale(1);opacity:.7;}100%{transform:scale(2.6);opacity:0;}}
+.emergency-text p{color:rgba(255,255,255,.62);font-size:14.5px;}
+.emergency-text a.phone-link{color:var(--gold-light);font-weight:700;}
+.emergency-cta{display:flex;align-items:center;gap:16px;position:relative;z-index:2;}
+@media(max-width:640px){.emergency-inner{padding:32px 24px;flex-direction:column;text-align:center;}.emergency-cta{flex-direction:column;width:100%;}.emergency-cta .btn{width:100%;}}
+
+/* ============ ABOUT ============ */
+.about-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:60px;align-items:center;}
+@media(max-width:940px){.about-grid{grid-template-columns:1fr;gap:40px;}}
+.about-visual{position:relative;height:460px;border-radius:var(--radius-lg);overflow:hidden;}
+.about-visual .ph-img{position:absolute;inset:0;}
+.about-visual .ph-img img{width:100%;height:100%;}
+.about-badge{position:absolute;bottom:22px;left:22px;right:22px;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);border-radius:16px;padding:18px 20px;display:flex;gap:26px;box-shadow:var(--shadow-soft);}
+.about-badge div b{display:block;font-family:var(--font-display);font-size:22px;color:var(--navy-950);}
+.about-badge div span{font-size:12px;color:var(--muted-dark);}
+.about-text p{color:var(--muted-dark);margin-bottom:16px;font-size:15.5px;}
+.about-tags{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px;}
+.about-tag{padding:9px 16px;border-radius:100px;background:var(--ivory);border:1px solid #dde6f1;font-size:13px;font-weight:600;color:var(--navy-800);}
+
+/* ============ CONTACT ============ */
+.contact-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:50px;}
+@media(max-width:940px){.contact-grid{grid-template-columns:1fr;}}
+.contact-info-card{background:var(--navy-950);border-radius:var(--radius-lg);padding:38px 32px;color:#fff;}
+.contact-info-card h3{color:#fff;font-size:22px;margin-bottom:6px;}
+.contact-info-card>p{color:rgba(255,255,255,.55);font-size:13.5px;margin-bottom:28px;}
+.contact-row{display:flex;gap:14px;align-items:flex-start;padding:16px 0;border-top:1px solid rgba(255,255,255,.1);}
+.contact-row:first-of-type{border-top:none;}
+.contact-row svg{width:20px;height:20px;stroke:var(--gold-light);flex-shrink:0;margin-top:2px;}
+.contact-row b{display:block;font-size:14px;color:#fff;}
+.contact-row span,.contact-row a{font-size:13.5px;color:rgba(255,255,255,.62);}
+.contact-row a:hover{color:var(--turquoise);}
+.social-row{display:flex;gap:10px;margin-top:26px;}
+.social-btn{width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;transition:all .3s var(--ease);}
+.social-btn:hover{background:var(--turquoise);}
+.social-btn svg{width:16px;height:16px;stroke:#fff;}
+.map-embed{margin-top:24px;border-radius:16px;overflow:hidden;height:170px;border:1px solid rgba(255,255,255,.12);}
+.map-embed iframe{width:100%;height:100%;border:0;filter:grayscale(.3) contrast(1.05);}
+
+.contact-form{background:#fff;border:1px solid #e7edf5;border-radius:var(--radius-lg);padding:38px;box-shadow:var(--shadow-soft);}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
+@media(max-width:560px){.form-grid{grid-template-columns:1fr;}}
+.form-field{margin-bottom:18px;}
+.form-field.full{grid-column:1/-1;}
+.form-field label{display:block;font-size:13px;font-weight:600;color:var(--navy-900);margin-bottom:8px;}
+.form-field input,.form-field select,.form-field textarea{
+  width:100%;padding:13px 16px;border-radius:12px;border:1.5px solid #dde6f1;background:var(--ivory);
+  font-size:14.5px;color:var(--ink);transition:all .3s var(--ease);
+}
+.form-field input:focus,.form-field select:focus,.form-field textarea:focus{border-color:var(--turquoise);background:#fff;box-shadow:0 0 0 4px rgba(31,207,192,.12);}
+.form-field textarea{resize:vertical;min-height:110px;}
+.form-msg{margin-top:16px;padding:14px 18px;border-radius:12px;background:#e9fbf6;color:#0c7a63;font-size:14px;font-weight:600;display:none;align-items:center;gap:8px;}
+.form-msg.show{display:flex;}
+.form-msg svg{width:18px;height:18px;stroke:#0c7a63;flex-shrink:0;}
+
+/* ============ FOOTER ============ */
+.footer{background:var(--navy-950);color:rgba(255,255,255,.65);padding:80px 0 0;}
+.footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1.2fr;gap:40px;padding-bottom:60px;border-bottom:1px solid rgba(255,255,255,.08);}
+@media(max-width:900px){.footer-grid{grid-template-columns:1fr 1fr;}}
+@media(max-width:560px){.footer-grid{grid-template-columns:1fr;}}
+.footer-brand .logo{margin-bottom:14px;}
+.footer-brand p{font-size:14px;font-style:italic;font-family:var(--font-display);color:var(--gold-light);margin-bottom:20px;}
+.footer-brand .social-row{margin-top:10px;}
+.footer h4{color:#fff;font-size:14.5px;font-weight:700;margin-bottom:18px;letter-spacing:.03em;text-transform:uppercase;}
+.footer-links li{margin-bottom:11px;}
+.footer-links a{font-size:14px;transition:color .3s;}
+.footer-links a:hover{color:var(--turquoise);}
+.footer-contact p{font-size:14px;margin-bottom:10px;}
+.footer-contact b{color:#fff;}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;padding:26px 0;font-size:13px;flex-wrap:wrap;gap:10px;}
+.footer-bottom a{color:rgba(255,255,255,.65);}
+
+/* ============ FLOATING WHATSAPP / MOBILE STICKY ============ */
+.wa-float{
+  position:fixed;bottom:26px;right:26px;z-index:900;width:62px;height:62px;border-radius:50%;
+  background:linear-gradient(135deg,#25d366,#1fae54);display:flex;align-items:center;justify-content:center;
+  box-shadow:0 16px 40px -10px rgba(37,211,102,.6);animation:waPulse 2.6s ease-in-out infinite;
+}
+.wa-float svg{width:30px;height:30px;fill:#fff;}
+@keyframes waPulse{0%,100%{transform:scale(1);}50%{transform:scale(1.07);}}
+.mobile-sticky-cta{display:none;}
+@media(max-width:768px){
+  .wa-float{bottom:86px;width:54px;height:54px;}
+  .wa-float svg{width:26px;height:26px;}
+  .mobile-sticky-cta{
+    display:flex;position:fixed;bottom:0;left:0;right:0;z-index:850;background:var(--navy-950);
+    padding:12px 16px calc(12px + env(safe-area-inset-bottom));gap:10px;box-shadow:0 -10px 30px rgba(0,0,0,.25);
+  }
+  .mobile-sticky-cta .btn{flex:1;padding:13px;font-size:13.5px;}
+}
+
+/* ============ MISC ============ */
+.toast{position:fixed;bottom:30px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--navy-950);color:#fff;padding:14px 24px;border-radius:100px;font-size:14px;font-weight:600;z-index:2000;opacity:0;transition:all .4s var(--ease);box-shadow:var(--shadow-lift);display:flex;align-items:center;gap:8px;}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
+</style>
 </head>
 <body>
-    <div class="background-animation">
-        <div class="floating-shapes">
-            <div class="shape shape-1"></div>
-            <div class="shape shape-2"></div>
-            <div class="shape shape-3"></div>
-            <div class="shape shape-4"></div>
-            <div class="shape shape-5"></div>
-            <div class="shape shape-6"></div>
-        </div>
-        <div class="glow-orbs">
-            <div class="orb orb-1"></div>
-            <div class="orb orb-2"></div>
-            <div class="orb orb-3"></div>
-        </div>
-        <div class="grid-overlay"></div>
+<a href="#main" class="skip-link">Skip to content</a>
+
+<!-- ============ NAVBAR ============ -->
+<header class="navbar" id="navbar">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="#home" class="logo">
+        <span class="plane-mark"><svg viewBox="0 0 24 24"><path d="M21 16v-2l-8-5V3.5a1.5 1.5 0 0 0-3 0V9l-8 5v2l8-2.5V19l-2.5 1.5V22l4-1 4 1v-1.5L13 19v-5.5l8 2.5z"/></svg></span>
+        <span>Skip Mee <em>Tours</em></span>
+      </a>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="#home">Home</a>
+        <a href="#services">Services</a>
+        <a href="#destinations">Destinations</a>
+        <a href="#tours">Tours</a>
+        <a href="#student">Student Consultancy</a>
+        <a href="#about">About Us</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <div class="nav-cta">
+        <a href="#" class="btn btn-gold btn-sm wa-open" aria-label="Chat with us on WhatsApp">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.79.47 3.47 1.29 4.93L2 22l5.31-1.39a9.9 9.9 0 0 0 4.73 1.2h.01c5.46 0 9.9-4.45 9.9-9.91C21.96 6.45 17.5 2 12.04 2zm5.86 14.02c-.25.7-1.44 1.34-1.99 1.42-.51.08-1.15.11-1.86-.12-.43-.14-.98-.32-1.68-.63-2.97-1.28-4.91-4.26-5.06-4.46-.15-.2-1.21-1.61-1.21-3.07 0-1.46.77-2.18 1.04-2.48.27-.3.6-.37.8-.37.2 0 .4 0 .58.01.19.01.44-.07.68.53.25.6.85 2.08.92 2.23.07.15.12.32.02.52-.1.2-.15.32-.3.49-.15.17-.31.38-.44.51-.15.15-.3.31-.13.61.17.3.75 1.25 1.62 2.03 1.11 1 2.05 1.31 2.35 1.46.3.15.48.13.65-.07.17-.2.73-.86.93-1.16.2-.3.4-.24.66-.14.27.1 1.72.82 2.01.97.3.15.49.22.56.35.07.13.07.75-.18 1.44z"/></svg>
+          WhatsApp Us
+        </a>
+      </div>
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="mobile-menu" id="mobileMenu">
+  <div class="mobile-menu-top">
+    <a href="#home" class="logo">
+      <span class="plane-mark"><svg viewBox="0 0 24 24"><path d="M21 16v-2l-8-5V3.5a1.5 1.5 0 0 0-3 0V9l-8 5v2l8-2.5V19l-2.5 1.5V22l4-1 4 1v-1.5L13 19v-5.5l8 2.5z"/></svg></span>
+      <span>Skip Mee <em>Tours</em></span>
+    </a>
+    <button class="mobile-menu-close" id="mobileMenuClose" aria-label="Close menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+    </button>
+  </div>
+  <nav aria-label="Mobile">
+    <a href="#home">Home</a>
+    <a href="#services">Services</a>
+    <a href="#destinations">Destinations</a>
+    <a href="#tours">Tours</a>
+    <a href="#student">Student Consultancy</a>
+    <a href="#about">About Us</a>
+    <a href="#contact">Contact</a>
+  </nav>
+  <a href="#" class="btn btn-gold wa-open">Chat With Us on WhatsApp</a>
+</div>
+
+<main id="main">
+<!-- ============ HERO ============ -->
+<section class="hero" id="home">
+  <div class="hero-bg-photo ph-img duotone-dark">
+    <img src="https://picsum.photos/seed/skipmee-hero-clouds/1800/1100" alt="" loading="eager">
+  </div>
+  <div class="hero-flightpath" aria-hidden="true">
+    <svg viewBox="0 0 960 600" preserveAspectRatio="xMidYMid slice">
+      <path class="flight-line" d="M60,420 C 260,120 560,560 900,180"/>
+      <circle class="flight-dot" cx="60" cy="420" r="5"/>
+      <circle class="flight-dot" cx="900" cy="180" r="5"/>
+    </svg>
+    <svg class="plane-icon" viewBox="0 0 24 24"><path d="M21 16v-2l-8-5V3.5a1.5 1.5 0 0 0-3 0V9l-8 5v2l8-2.5V19l-2.5 1.5V22l4-1 4 1v-1.5L13 19v-5.5l8 2.5z"/></svg>
+  </div>
+  <div id="particles" class="hero-particles" aria-hidden="true"></div>
+
+  <div class="container hero-grid">
+    <div class="hero-content">
+      <div class="eyebrow" style="color:var(--gold-light)">Malaysia ⇄ Bangladesh ⇄ The World</div>
+      <h1 class="reveal in-view">Your Journey <em>Starts Here.</em></h1>
+      <p class="hero-sub reveal in-view" style="transition-delay:.1s">Travel. Study. Explore. We make your journey simple, reliable, and stress-free — from flights and visas to full student consultancy.</p>
+      <div class="hero-ctas reveal in-view" style="transition-delay:.2s">
+        <a href="#contact" class="btn btn-gold">Book Your Journey</a>
+        <a href="#" class="btn btn-glass wa-open">Talk to Our Consultant</a>
+      </div>
     </div>
 
-    <div class="container">
-        <header class="header">
-            <div class="avatar-container">
-                <div class="avatar-ring"></div>
-                <div class="avatar-ring ring-2"></div>
-                <div class="avatar-ring ring-3"></div>
-                <div class="avatar">
-                    <span class="avatar-emoji">😈</span>
-                </div>
-            </div>
-            <h1 class="main-title">
-                <span class="title-letter" data-letter="M">M</span>
-                <span class="title-letter" data-letter="A">A</span>
-                <span class="title-letter" data-letter="R">R</span>
-                <span class="title-letter" data-letter="C">C</span>
-                <span class="title-letter" data-letter="O">O</span>
-                <span class="title-letter space">&nbsp;</span>
-                <span class="title-letter" data-letter="X">X</span>
-                <span class="title-letter" data-letter="I">I</span>
-                <span class="title-letter" data-letter="T">T</span>
-                <span class="title-letter" data-letter="E">E</span>
-                <span class="title-letter" data-letter="R">R</span>
-                <span class="title-letter" data-letter="S">S</span>
-
-            </h1>
-            <p class="subtitle"></p>
-            <div class="status-indicator">
-                <span class="status-dot"></span>
-                <span class="status-text">Available for work</span>
-            </div>
-            <div class="specializations">
-                <div class="spec-badge game">
-                    <span class="badge-icon">🎮</span>
-                    <span class="badge-text">Game Dev</span>
-                    <div class="badge-shine"></div>
-                </div>
-                <div class="spec-badge web">
-                    <span class="badge-icon">🌐</span>
-                    <span class="badge-text">Web Dev</span>
-                    <div class="badge-shine"></div>
-                </div>
-                <div class="spec-badge app">
-                    <span class="badge-icon">📱</span>
-                    <span class="badge-text">PANEL DEV C++/C#</span>
-                    <div class="badge-shine"></div>
-                </div>
-            </div>
-        </header>
-
-        <section class="section expertise-section">
-            <h2 class="section-title">
-                <span class="title-icon">🚀</span>
-                <span class="title-text">What I Do</span>
-                <div class="title-underline"></div>
-            </h2>
-            <div class="expertise-grid">
-                <div class="expertise-card" data-tilt>
-                    <div class="card-border"></div>
-                    <div class="card-glow"></div>
-                    <div class="expertise-icon-wrapper">
-                        <div class="icon-bg"></div>
-                        <div class="expertise-icon">🎮</div>
-                    </div>
-                    <h3 class="expertise-title">Game Development</h3>
-                    <p class="expertise-description">
-                        Creating immersive gaming experiences with advanced mechanics, 
-                        stunning visuals, and engaging gameplay. From 2D indie games 
-                        to 3D multiplayer experiences.
-                    </p>
-                    <div class="expertise-tech">
-                        <span class="tech-tag">C++</span>
-                        <span class="tech-tag">C#</span>
-                        <span class="tech-tag">Lua</span>
-                        <span class="tech-tag">Unity</span>
-                    </div>
-                </div>
-
-                <div class="expertise-card" data-tilt>
-                    <div class="card-border"></div>
-                    <div class="card-glow"></div>
-                    <div class="expertise-icon-wrapper">
-                        <div class="icon-bg"></div>
-                        <div class="expertise-icon">🌐</div>
-                    </div>
-                    <h3 class="expertise-title">Website Development</h3>
-                    <p class="expertise-description">
-                        Building modern, responsive, and dynamic websites with clean code, 
-                        beautiful designs, and optimal performance. From landing pages 
-                        to complex web applications.
-                    </p>
-                    <div class="expertise-tech">
-                        <span class="tech-tag">HTML</span>
-                        <span class="tech-tag">CSS</span>
-                        <span class="tech-tag">JavaScript</span>
-                        <span class="tech-tag">TypeScript</span>
-                    </div>
-                </div>
-
-                <div class="expertise-card" data-tilt>
-                    <div class="card-border"></div>
-                    <div class="card-glow"></div>
-                    <div class="expertise-icon-wrapper">
-                        <div class="icon-bg"></div>
-                        <div class="expertise-icon">📱</div>
-                    </div>
-                    <h3 class="expertise-title">FF PANEL C++/C#</h3>
-                    <p class="expertise-description">
-                        Developing C++ & C# PANEL / HACKS FOR PC AND 
-                        MOBILE WHICH IS 101% SAFE ALL SERVER
-                        DM ME FOR BUY OR JOIN DC .
-                    </p>
-                    <div class="expertise-tech">
-                        <span class="tech-tag">C++</span>
-                        <span class="tech-tag">C#</span>
-                        <span class="tech-tag">PYTHON</span>
-                        <span class="tech-tag">JavaScript</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="section skills-section">
-            <h2 class="section-title">
-                <span class="title-icon">💻</span>
-                <span class="title-text">Tech Stack</span>
-                <div class="title-underline"></div>
-            </h2>
-            <div class="skills-grid">
-                <div class="skill-card" data-skill="javascript">
-                    <div class="skill-icon">⚡</div>
-                    <div class="skill-name">JavaScript</div>
-                    <div class="skill-bar">
-                        <div class="skill-progress" data-progress="95"></div>
-                    </div>
-                    <span class="skill-percent">95%</span>
-                </div>
-                <div class="skill-card" data-skill="typescript">
-                    <div class="skill-icon">📘</div>
-                    <div class="skill-name">TypeScript</div>
-                    <div class="skill-bar">
-                        <div class="skill-progress" data-progress="90"></div>
-                    </div>
-                    <span class="skill-percent">90%</span>
-                </div>
-                <div class="skill-card" data-skill="html">
-                    <div class="skill-icon">🌐</div>
-                    <div class="skill-name">HTML</div>
-                    <div class="skill-bar">
-                        <div class="skill-progress" data-progress="98"></div>
-                    </div>
-                    <span class="skill-percent">98%</span>
-                </div>
-                <div class="skill-card" data-skill="css">
-                    <div class="skill-icon">🎨</div>
-                    <div class="skill-name">CSS</div>
-                    <div class="skill-bar">
-                        <div class="skill-progress" data-progress="95"></div>
-                    </div>
-                    <span class="skill-percent">95%</span>
-                </div>
-                <div class="skill-card" data-skill="csharp">
-                    <div class="skill-icon">🔷</div>
-                    <div class="skill-name">C#</div>
-                    <div class="skill-bar">
-                        <div class="skill-progress" data-progress="85"></div>
-                    </div>
-                    <span class="skill-percent">99%</span>
-                </div>
-                <div class="skill-card" data-skill="cpp">
-                    <div class="skill-icon">⚙️</div>
-                    <div class="skill-name">C++</div>
-                    <div class="skill-bar">
-                        <div class="skill-progress" data-progress="80"></div>
-                    </div>
-                    <span class="skill-percent">101%</span>
-                </div>
-                <div class="skill-card" data-skill="sql">
-                    <div class="skill-icon">🗄️</div>
-                    <div class="skill-name">SQL</div>
-                    <div class="skill-bar">
-                        <div class="skill-progress" data-progress="88"></div>
-                    </div>
-                    <span class="skill-percent">88%</span>
-                </div>
-                <div class="skill-card" data-skill="lua">
-                    <div class="skill-icon">🌙</div>
-                    <div class="skill-name">Lua</div>
-                    <div class="skill-bar">
-                        <div class="skill-progress" data-progress="82"></div>
-                    </div>
-                    <span class="skill-percent">82%</span>
-                </div>
-                <div class="skill-card" data-skill="flutter">
-                    <div class="skill-icon">📱</div>
-                    <div class="skill-name">Flutter</div>
-                    <div class="skill-bar">
-                        <div class="skill-progress" data-progress="87"></div>
-                    </div>
-                    <span class="skill-percent">87%</span>
-                </div>
-            </div>
-        </section>
-
-        <section class="section languages-section">
-            <h2 class="section-title">
-                <span class="title-icon">🌍</span>
-                <span class="title-text">Languages I Speak</span>
-                <div class="title-underline"></div>
-            </h2>
-            <div class="languages-container">
-                <div class="language-card">
-                    <div class="language-glow"></div>
-                    <div class="flag-container">
-                        <div class="flag">🇲🇦</div>
-                    </div>
-                    <div class="language-info">
-                        <div class="language-name">Arabic</div>
-                        <div class="language-proficiency">Native Speaker</div>
-                    </div>
-                </div>
-                <div class="language-card">
-                    <div class="language-glow"></div>
-                    <div class="flag-container">
-                        <div class="flag">PK UD</div>
-                    </div>
-                    <div class="language-info">
-                        <div class="language-name">URDU</div>
-                        <div class="language-proficiency">Fluent</div>
-                    </div>
-                </div>
-                <div class="language-card">
-                    <div class="language-glow"></div>
-                    <div class="flag-container">
-                        <div class="flag">🇬🇧</div>
-                    </div>
-                    <div class="language-info">
-                        <div class="language-name">English</div>
-                        <div class="language-proficiency">Fluent</div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="section social-section">
-            <h2 class="section-title">
-                <span class="title-icon">🔗</span>
-                <span class="title-text">Connect With Me</span>
-                <div class="title-underline"></div>
-            </h2>
-            <div class="social-links">
-                <a href="#" target="_blank" class="social-btn instagram-btn">
-                    <div class="btn-bg"></div>
-                    <div class="social-icon-wrapper">
-                        <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-                        </svg>
-                    </div>
-                    <span class="social-text">Instagram</span>
-                    <div class="btn-shine"></div>
-                </a>
-                <a href="https://discord.gg/6sq8qbtz" target="_blank" class="social-btn discord-btn">
-                    <div class="btn-bg"></div>
-                    <div class="social-icon-wrapper">
-                        <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/>
-                        </svg>
-                    </div>
-                    <span class="social-text">Discord</span>
-                    <div class="btn-shine"></div>
-                </a>
-                <a href="#" target="_blank" class="social-btn github-btn">
-                    <div class="btn-bg"></div>
-                    <div class="social-icon-wrapper">
-                        <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                        </svg>
-                    </div>
-                    <span class="social-text">GitHub</span>
-                    <div class="btn-shine"></div>
-                </a>
-                <a href="#" target="_blank" class="social-btn twitter-btn">
-                    <div class="btn-bg"></div>
-                    <div class="social-icon-wrapper">
-                        <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-                        </svg>
-                    </div>
-                    <span class="social-text">Twitter</span>
-                    <div class="btn-shine"></div>
-                </a>
-            </div>
-        </section>
-
-        <footer class="footer">
-            <div class="footer-content">
-                <p class="footer-text">© 2025 MARCO XITERS. All rights reserved.</p>
-                <p class="footer-subtext">Crafted with 💜 and code</p>
-            </div>
-            <div class="footer-decoration"></div>
-        </footer>
+    <div class="hero-panel reveal in-view" style="transition-delay:.3s">
+      <div class="hero-panel-label">Find Your Service</div>
+      <div class="hero-panel-grid">
+        <a href="#services" class="hero-panel-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16v-2l-8-5V3.5a1.5 1.5 0 0 0-3 0V9l-8 5v2l8-2.5V19l-2.5 1.5V22l4-1 4 1v-1.5L13 19v-5.5l8 2.5z"/></svg><span>Air Ticket</span></a>
+        <a href="#services" class="hero-panel-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="20" rx="2"/><path d="M9 9h6M9 13h6M9 17h3"/></svg><span>Visa</span></a>
+        <a href="#services" class="hero-panel-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V8l9-5 9 5v13"/><path d="M9 21v-6h6v6"/></svg><span>Hotel</span></a>
+        <a href="#tours" class="hero-panel-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg><span>Tour Package</span></a>
+        <a href="#student" class="hero-panel-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M2 9l10-5 10 5-10 5-10-5z"/><path d="M6 11v5c0 1.5 3 3 6 3s6-1.5 6-3v-5"/></svg><span>Student</span></a>
+        <a href="#services" class="hero-panel-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8l-9-5-9 5 9 5 9-5z"/><path d="M3 8v8l9 5 9-5V8M12 13v8"/></svg><span>Courier</span></a>
+      </div>
     </div>
 
-    <div class="custom-cursor"></div>
-    <div class="cursor-follower"></div>
+    <div class="trust-strip">
+      <div class="trust-item"><div class="trust-num"><span class="counter" data-count="5000">0</span><em>+</em></div><div class="trust-label">Travelers Assisted</div></div>
+      <div class="trust-item"><div class="trust-num"><span class="counter" data-count="1200">0</span><em>+</em></div><div class="trust-label">Visas Processed</div></div>
+      <div class="trust-item"><div class="trust-num"><span class="counter" data-count="8">0</span><em>+</em></div><div class="trust-label">Destinations Covered</div></div>
+      <div class="trust-item"><div class="trust-num"><em>24/7</em></div><div class="trust-label">Support Availability</div></div>
+    </div>
+  </div>
+</section>
 
-    <script src="script.js"></script>
+<!-- ============ SERVICES ============ -->
+<section class="section-pad" id="services">
+  <div class="container">
+    <div class="section-head center reveal">
+      <div class="eyebrow center dark">What We Offer</div>
+      <h2 class="section-title">Everything You Need for <em>Your Journey</em></h2>
+      <p class="section-sub">From the first flight search to the final stamp on your visa, Skip Mee handles every step so you don't have to.</p>
+    </div>
+
+    <div class="services-grid stagger">
+      <div class="service-card reveal">
+        <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16v-2l-8-5V3.5a1.5 1.5 0 0 0-3 0V9l-8 5v2l8-2.5V19l-2.5 1.5V22l4-1 4 1v-1.5L13 19v-5.5l8 2.5z"/></svg></div>
+        <h3>Air Tickets</h3>
+        <p>Domestic and international flight booking with competitive fares and reliable assistance.</p>
+        <a href="#contact" class="service-link">Learn More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="20" rx="2"/><path d="M9 9h6M9 13h6M9 17h3"/></svg></div>
+        <h3>Visa Processing</h3>
+        <p>Professional visa assistance for tourist, student, business, and other travel purposes.</p>
+        <a href="#contact" class="service-link">Learn More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V8l9-5 9 5v13"/><path d="M9 21v-6h6v6"/></svg></div>
+        <h3>Hotel Reservations</h3>
+        <p>Comfortable hotel bookings with options to match different budgets and destinations.</p>
+        <a href="#contact" class="service-link">Learn More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="9" width="15" height="9" rx="1"/><path d="M16 12h4l3 3v3h-7"/><circle cx="6" cy="19" r="1.6"/><circle cx="18" cy="19" r="1.6"/></svg></div>
+        <h3>Car Rental</h3>
+        <p>Reliable transportation options for short trips, business travel, and holidays.</p>
+        <a href="#contact" class="service-link">Learn More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12l4-7h10l4 7"/><rect x="3" y="12" width="18" height="6" rx="1"/><circle cx="7.5" cy="18" r="1.3"/><circle cx="16.5" cy="18" r="1.3"/></svg></div>
+        <h3>Airport Pick-Up & Drop-Off</h3>
+        <p>Convenient airport transfers with professional, punctual drivers waiting for you.</p>
+        <a href="#contact" class="service-link">Learn More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></div>
+        <h3>Tour Packages</h3>
+        <p>Customized holiday packages designed around your destination, budget, and schedule.</p>
+        <a href="#contact" class="service-link">Learn More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M2 9l10-5 10 5-10 5-10-5z"/><path d="M6 11v5c0 1.5 3 3 6 3s6-1.5 6-3v-5"/></svg></div>
+        <h3>Student Consultancy</h3>
+        <p>Complete guidance for students planning to study in Malaysia and beyond — from university selection to admission.</p>
+        <a href="#student" class="service-link">Learn More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8l-9-5-9 5 9 5 9-5z"/><path d="M3 8v8l9 5 9-5V8M12 13v8"/></svg></div>
+        <h3>Malaysia ↔ Bangladesh Courier</h3>
+        <p>Secure and convenient courier service between Malaysia and Bangladesh for documents and parcels.</p>
+        <a href="#contact" class="service-link">Learn More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ DESTINATIONS ============ -->
+<section class="section-pad" id="destinations" style="background:#fff;">
+  <div class="container">
+    <div class="section-head center reveal">
+      <div class="eyebrow center dark">Where To Next</div>
+      <h2 class="section-title">Explore Amazing <em>Destinations</em></h2>
+      <p class="section-sub">Eight destinations, one trusted team — handling every booking, visa, and detail in between.</p>
+    </div>
+    <div class="dest-grid stagger">
+      <div class="dest-card reveal">
+        <div class="ph-img"><img src="https://picsum.photos/seed/skipmee-malaysia/600/760" alt="Kuala Lumpur skyline, Malaysia" loading="lazy"></div>
+        <div class="dest-body"><span class="dest-flag">🇲🇾</span><h3>Malaysia</h3><p>Twin towers, rainforests and island escapes — our home base and our specialty.</p><a href="#contact" class="dest-explore">Explore Destination →</a></div>
+      </div>
+      <div class="dest-card reveal">
+        <div class="ph-img"><img src="https://picsum.photos/seed/skipmee-bangladesh/600/760" alt="Bangladesh coastline" loading="lazy"></div>
+        <div class="dest-body"><span class="dest-flag">🇧🇩</span><h3>Bangladesh</h3><p>Home routes made easy, from Cox's Bazar to Dhaka, with dedicated courier support.</p><a href="#contact" class="dest-explore">Explore Destination →</a></div>
+      </div>
+      <div class="dest-card reveal">
+        <div class="ph-img"><img src="https://picsum.photos/seed/skipmee-thailand/600/760" alt="Thailand temples and coastline" loading="lazy"></div>
+        <div class="dest-body"><span class="dest-flag">🇹🇭</span><h3>Thailand</h3><p>Bangkok's buzz to Phuket's beaches — short-haul getaways done right.</p><a href="#contact" class="dest-explore">Explore Destination →</a></div>
+      </div>
+      <div class="dest-card reveal">
+        <div class="ph-img"><img src="https://picsum.photos/seed/skipmee-singapore/600/760" alt="Singapore skyline" loading="lazy"></div>
+        <div class="dest-body"><span class="dest-flag">🇸🇬</span><h3>Singapore</h3><p>A polished city break, perfectly timed and effortlessly booked.</p><a href="#contact" class="dest-explore">Explore Destination →</a></div>
+      </div>
+      <div class="dest-card reveal">
+        <div class="ph-img"><img src="https://picsum.photos/seed/skipmee-dubai/600/760" alt="Dubai skyline" loading="lazy"></div>
+        <div class="dest-body"><span class="dest-flag">🇦🇪</span><h3>Dubai / UAE</h3><p>Desert luxury and skyline views, with visa support handled end to end.</p><a href="#contact" class="dest-explore">Explore Destination →</a></div>
+      </div>
+      <div class="dest-card reveal">
+        <div class="ph-img"><img src="https://picsum.photos/seed/skipmee-turkey/600/760" alt="Turkey landscape" loading="lazy"></div>
+        <div class="dest-body"><span class="dest-flag">🇹🇷</span><h3>Turkey</h3><p>Where two continents meet — history, cuisine and coastline in one trip.</p><a href="#contact" class="dest-explore">Explore Destination →</a></div>
+      </div>
+      <div class="dest-card reveal">
+        <div class="ph-img"><img src="https://picsum.photos/seed/skipmee-saudi/600/760" alt="Saudi Arabia desert landscape" loading="lazy"></div>
+        <div class="dest-body"><span class="dest-flag">🇸🇦</span><h3>Saudi Arabia</h3><p>Travel arrangements handled with care and cultural understanding.</p><a href="#contact" class="dest-explore">Explore Destination →</a></div>
+      </div>
+      <div class="dest-card reveal">
+        <div class="ph-img"><img src="https://picsum.photos/seed/skipmee-europe/600/760" alt="European old town" loading="lazy"></div>
+        <div class="dest-body"><span class="dest-flag">🇪🇺</span><h3>Europe</h3><p>Multi-country itineraries and visa guidance for the trip of a lifetime.</p><a href="#contact" class="dest-explore">Explore Destination →</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TOURIST SPOTS ============ -->
+<section class="section-pad" id="tours" style="background:var(--ivory);">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="eyebrow dark">Famous Attractions</div>
+      <h2 class="section-title">Iconic Spots Worth <em>The Trip</em></h2>
+      <p class="section-sub">A closer look at the landmarks our travelers ask about most.</p>
+    </div>
+
+    <div class="spots-tabs" role="tablist" aria-label="Tourist spots by country">
+      <button class="spot-tab active" data-country="malaysia">Malaysia</button>
+      <button class="spot-tab" data-country="bangladesh">Bangladesh</button>
+      <button class="spot-tab" data-country="thailand">Thailand</button>
+      <button class="spot-tab" data-country="singapore">Singapore</button>
+      <button class="spot-tab" data-country="dubai">Dubai</button>
+    </div>
+
+    <div class="spots-viewport">
+      <div class="spots-track-wrap active" data-country="malaysia">
+        <div class="spots-track">
+          <div class="spot-card"><div class="ph-img"><img src="https://picsum.photos/seed/spot-petronas/420/560" alt="Petronas Twin Towers" loading="lazy"></div><div class="spot-card-label"><span>Kuala Lumpur</span><h4>Petronas Twin Towers</h4></div></div>
+          <div class="spot-card"><div class="ph-img"><img src="https://picsum.photos/seed/spot-langkawi/420/560" alt="Langkawi island" loading="lazy"></div><div class="spot-card-label"><span>Kedah</span><h4>Langkawi</h4></div></div>
+          <div class="spot-card"><div class="ph-img"><img src="https://picsum.photos/seed/spot-genting/420/560" alt="Genting Highlands" loading="lazy"></div><div class="spot-card-label"><span>Pahang</span><h4>Genting Highlands</h4></div></div>
+          <div class="spot-card"><div class="ph-img"><img src="https://picsum.photos/seed/spot-kl/420/560" alt="Kuala Lumpur city" loading="lazy"></div><div class="spot-card-label"><span>Federal Territory</span><h4>Kuala Lumpur</h4></div></div>
+          <div class="spot-card"><div class="ph-img"><img src="https://picsum.photos/seed/spot-cameron/420/560" alt="Cameron Highlands tea fields" loading="lazy"></div><div class="spot-card-label"><span>Pahang</span><h4>Cameron Highlands</h4></div></div>
+        </div>
+      </div>
+      <div class="spots-track-wrap" data-country="bangladesh">
+        <div class="spots-track">
+          <div class="spot-card"><div class="ph-img"><img src="https://picsum.photos/seed/spot-coxsbazar/420/560" alt="Cox's Bazar beach" loading="lazy"></div><div class="spot-card-label"><span>Chattogram</span><h4>Cox's Bazar</h4></div></div>
+          <div class="spot-card"><div class="ph-img"><img src="https://picsum.photos/seed/spot-sylhet/420/560" alt="Sylhet tea gardens" loading="lazy"></div><div class="spot-card-label"><span>Sylhet</span><h4>Sylhet</h4></div></div>
+          <div class="spot-card"><div class="ph-img"><img src="https://picsum.photos/seed/spot-sundarbans/420/560" alt="Sundarbans mangrove forest" loading="lazy"></div><div class="spot-card-label"><span>Khulna</span><h4>Sundarbans</h4></div></div>
+          <div class="spot-card"><div class="ph-img"><img src="https://picsum.photos/seed/spot-sajek/420/560" alt="Sajek Valley" loading="lazy"></div><div class="spot-card-label"><span>Rangamati</span><h4>Sajek Valley</h4></div></div>
+          <div class="spot-card"><div class="ph-img"><img src="https://picsum.photos/seed/spot-dhaka/420/560" alt="Dhaka city" loading="lazy"></div><div class="spot-card-label"><span>Capital</span><h4>Dhaka</h4></div></div>
+        </div>
+      </div>
+      <div class="spots-track-wrap" data-country="thailand">
+        <div class="spots-track">
+          <div class="spot-card"><div class="ph-img"><img src="https://picsum.photos/seed/spot-bangkok/420/560" alt="Bangkok city" loading="lazy"></div><div class="spot-card-label"><span>Central Thailand</span><h4>Bangkok</h4></div></div>
+          <div class="spot-card"><div class="ph-img"><img src="https://picsum.photos/seed/spot-phuket/420/560" alt="Phuket beach" loading="lazy"></div><div class="spot-card-label"><span>Andaman Coast</span><h4>Phuket</h4></div></div>
+          <div class="spot-card"><div class="ph-img"><img src="https://picsum.photos/seed/spot-krabi/420/560" alt="Krabi cliffs" loading="lazy"></div><div class="spot-card-label"><span>Andaman Coast</span><h4>Krabi</h4></div></div>
+          <div class="spot-card"><div class="ph-img"><img src="https://picsum.photos/seed/spot-pattaya/420/560" alt="Pattaya coastline" loading="lazy"></div><div class="spot-card-label"><span>Gulf of Thailand</span><h4>Pattaya</h4></div></div>
+        </div>
+      </div>
+      <div class="spots-track-wrap" data-country="singapore">
+        <div class="spots-track">
+          <div class="spot-card"><div class="ph-img"><img src="https://picsum.photos/seed/spot-mbs/420/560" alt="Marina Bay Sands" loading="lazy"></div><div class="spot-card-label"><span>Downtown Core</span><h4>Marina Bay Sands</h4></div></div>
+          <div class="spot-card"><div class="ph-img"><img src="https://picsum.photos/seed/spot-gbtb/420/560" alt="Gardens by the Bay" loading="lazy"></div><div class="spot-card-label"><span>Bay South</span><h4>Gardens by the Bay</h4></div></div>
+          <div class="spot-card"><div class="ph-img"><img src="https://picsum.photos/seed/spot-sentosa/420/560" alt="Sentosa island" loading="lazy"></div><div class="spot-card-label"><span>Sentosa Island</span><h4>Sentosa</h4></div></div>
+        </div>
+      </div>
+      <div class="spots-track-wrap" data-country="dubai">
+        <div class="spots-track">
+          <div class="spot-card"><div class="ph-img"><img src="https://picsum.photos/seed/spot-burjkhalifa/420/560" alt="Burj Khalifa" loading="lazy"></div><div class="spot-card-label"><span>Downtown Dubai</span><h4>Burj Khalifa</h4></div></div>
+          <div class="spot-card"><div class="ph-img"><img src="https://picsum.photos/seed/spot-marina/420/560" alt="Dubai Marina" loading="lazy"></div><div class="spot-card-label"><span>Dubai Marina</span><h4>Dubai Marina</h4></div></div>
+          <div class="spot-card"><div class="ph-img"><img src="https://picsum.photos/seed/spot-palm/420/560" alt="Palm Jumeirah" loading="lazy"></div><div class="spot-card-label"><span>Jumeirah</span><h4>Palm Jumeirah</h4></div></div>
+        </div>
+      </div>
+      <div class="spots-nav">
+        <button id="spotsPrev" aria-label="Previous spots"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg></button>
+        <button id="spotsNext" aria-label="Next spots"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ STUDENT CONSULTANCY ============ -->
+<section class="section-pad student-section" id="student">
+  <div class="container">
+    <div class="student-grid">
+      <div class="reveal">
+        <div class="eyebrow">Your Future Starts With The Right Choice</div>
+        <h2 class="section-title">Study Abroad <em>With Confidence</em></h2>
+        <p class="section-sub" style="max-width:520px;">Skip Mee Tours & Travels provides complete student consultancy and support for students planning to study abroad — guiding you from your first application to your first day on campus.</p>
+
+        <ul class="student-check-list">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>University & Course Selection</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Admission Guidance</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Application Assistance</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Documentation Support</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Student Visa Guidance</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Accommodation Guidance</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Airport Pickup</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Pre-Departure Guidance</li>
+        </ul>
+
+        <a href="#contact" class="btn btn-gold">Speak With a Student Consultant</a>
+      </div>
+
+      <div class="student-visual reveal-scale">
+        <div class="ph-img"><img src="https://picsum.photos/seed/skipmee-student/700/900" alt="Student preparing for study abroad journey" loading="lazy"></div>
+        <div class="student-float-card sf-1">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M2 9l10-5 10 5-10 5-10-5z"/><path d="M6 11v5c0 1.5 3 3 6 3s6-1.5 6-3v-5"/></svg>
+          <div><b>50+ Partner Universities</b><span>Across Malaysia & abroad</span></div>
+        </div>
+        <div class="student-float-card sf-2">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="20" rx="2"/><path d="M9 9h6M9 13h6M9 17h3"/></svg>
+          <div><b>Visa Guidance</b><span>Step-by-step support</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WHY CHOOSE US ============ -->
+<section class="section-pad" style="background:#fff;">
+  <div class="container">
+    <div class="section-head center reveal">
+      <div class="eyebrow center dark">Our Promise</div>
+      <h2 class="section-title">Why Choose <em>Skip Mee?</em></h2>
+      <p class="section-sub">Convenience, transparency and professional service — built around every traveler and every student.</p>
+    </div>
+    <div class="why-grid stagger">
+      <div class="why-card reveal">
+        <div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.6 6.5L21 9l-5 4.4L17.5 21 12 17.3 6.5 21 8 13.4 3 9l6.4-.5z"/></svg></div>
+        <b>10+ Services</b><span>All in one place</span>
+      </div>
+      <div class="why-card reveal">
+        <div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8l-9-5-9 5 9 5 9-5z"/><path d="M3 8v8l9 5 9-5V8"/></svg></div>
+        <b>Malaysia ↔ Bangladesh</b><span>Dedicated route support</span>
+      </div>
+      <div class="why-card reveal">
+        <div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></div>
+        <b>Professional Assistance</b><span>Experienced consultants</span>
+      </div>
+      <div class="why-card reveal">
+        <div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M2 9l10-5 10 5-10 5-10-5z"/><path d="M6 11v5c0 1.5 3 3 6 3s6-1.5 6-3v-5"/></svg></div>
+        <b>Student Consultancy</b><span>Full application support</span>
+      </div>
+      <div class="why-card reveal">
+        <div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="20" rx="2"/><path d="M9 9h6M9 13h6"/></svg></div>
+        <b>Travel & Visa Support</b><span>Handled start to finish</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HOW IT WORKS ============ -->
+<section class="section-pad" style="background:var(--ivory);">
+  <div class="container">
+    <div class="section-head center reveal">
+      <div class="eyebrow center dark">The Process</div>
+      <h2 class="section-title">How It <em>Works</em></h2>
+      <p class="section-sub">Four simple stages between where you are now and where you're going.</p>
+    </div>
+    <div class="steps-wrap" id="stepsWrap">
+      <div class="steps-line"><div class="steps-line-fill" id="stepsLineFill"></div></div>
+      <div class="steps-grid">
+        <div class="step-item reveal">
+          <div class="step-stamp"><span>01</span></div>
+          <h3>Contact Us</h3>
+          <p>Tell us what you need — a flight, a visa, or a full study plan.</p>
+        </div>
+        <div class="step-item reveal">
+          <div class="step-stamp"><span>02</span></div>
+          <h3>Get Expert Guidance</h3>
+          <p>Our team recommends the best option for your route, budget and timeline.</p>
+        </div>
+        <div class="step-item reveal">
+          <div class="step-stamp"><span>03</span></div>
+          <h3>Confirm Your Service</h3>
+          <p>Complete your booking or application with our support throughout.</p>
+        </div>
+        <div class="step-item reveal">
+          <div class="step-stamp"><span>04</span></div>
+          <h3>Travel With Confidence</h3>
+          <p>We stay with you — right up to the moment you land.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TESTIMONIALS ============ -->
+<section class="section-pad testi-section">
+  <div class="container">
+    <div class="section-head center reveal">
+      <div class="eyebrow center" style="color:var(--gold-light)">Real Stories</div>
+      <h2 class="section-title">What Our Customers <em style="color:var(--gold-light)">Say</em></h2>
+    </div>
+    <div class="testi-track" id="testiTrack">
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p>Skip Mee handled my student visa from start to finish. Every document, every deadline — they kept me on track the whole way.</p>
+        <div class="testi-person"><div class="testi-avatar">RA</div><div><b>Rafiq Ahmed</b><span>Bangladesh · Student Visa</span></div></div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p>Our family tour package to Langkawi was perfectly organized. Hotel, transfers, everything booked without a single hiccup.</p>
+        <div class="testi-person"><div class="testi-avatar">SN</div><div><b>Siti Nur</b><span>Malaysia · Tour Package</span></div></div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p>I send documents home to Dhaka every month — their courier service is fast, and I always know exactly where my parcel is.</p>
+        <div class="testi-person"><div class="testi-avatar">TH</div><div><b>Tanvir Hossain</b><span>Bangladesh · Courier</span></div></div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p>Booked flights and a Dubai visa in the same call. The consultant explained every fee upfront — no surprises later.</p>
+        <div class="testi-person"><div class="testi-avatar">AK</div><div><b>Aisha Karim</b><span>UAE · Flights & Visa</span></div></div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p>They found me a university and course that actually matched my grades and budget. Now I'm settled in KL and loving it.</p>
+        <div class="testi-person"><div class="testi-avatar">MI</div><div><b>Mahin Islam</b><span>Bangladesh · Student Consultancy</span></div></div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p>Airport pickup was waiting exactly on time at 2am. Small thing, but it told me this company actually cares.</p>
+        <div class="testi-person"><div class="testi-avatar">DL</div><div><b>David Lim</b><span>Malaysia · Airport Transfer</span></div></div>
+      </div>
+    </div>
+    <div class="testi-dots" id="testiDots"></div>
+  </div>
+</section>
+
+<!-- ============ EMERGENCY ============ -->
+<section style="padding:0 0 110px;background:var(--ivory);">
+  <div class="emergency reveal-scale">
+    <div class="emergency-inner">
+      <div class="emergency-text">
+        <h3><span class="pulse-dot"></span>Need Urgent Assistance?</h3>
+        <p>Emergency: <a href="tel:+60111633169" class="phone-link">01111633169</a> &nbsp;·&nbsp; Office Hours: Daily, 10:00 AM – 8:00 PM (Malaysia Time)</p>
+      </div>
+      <div class="emergency-cta">
+        <a href="tel:+60111633169" class="btn btn-gold">Call Now</a>
+        <a href="#" class="btn btn-glass wa-open">WhatsApp Us</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ABOUT ============ -->
+<section class="section-pad" id="about" style="background:#fff;">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-visual reveal-scale">
+        <div class="ph-img"><img src="https://picsum.photos/seed/skipmee-about/700/900" alt="Airport travelers with passports and boarding documents" loading="lazy"></div>
+        <div class="about-badge">
+          <div><b>2019</b><span>Trusted since</span></div>
+          <div><b>8+</b><span>Countries served</span></div>
+          <div><b>5,000+</b><span>Journeys arranged</span></div>
+        </div>
+      </div>
+      <div class="about-text reveal">
+        <div class="eyebrow dark">About Us</div>
+        <h2 class="section-title">Skip Mee Tours <em>& Travels</em></h2>
+        <p>Skip Mee Tours & Travels is a Malaysia-based travel and student consultancy agency built to make the journey between Malaysia, Bangladesh, and the world simple, honest, and stress-free.</p>
+        <p>From air tickets and visa processing to hotel bookings, tour packages, airport transfers, and full student consultancy, our team handles the details so you can focus on the destination — not the paperwork.</p>
+        <p>We also run a dedicated Malaysia ↔ Bangladesh courier service, keeping documents and parcels moving securely between the two countries our clients call home.</p>
+        <div class="about-tags">
+          <span class="about-tag">Travel Agency</span>
+          <span class="about-tag">Visa Consultancy</span>
+          <span class="about-tag">Student Consultancy</span>
+          <span class="about-tag">Courier Services</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section class="section-pad" id="contact" style="background:var(--ivory);">
+  <div class="container">
+    <div class="section-head center reveal">
+      <div class="eyebrow center dark">Get In Touch</div>
+      <h2 class="section-title">Let's Plan Your <em>Next Move</em></h2>
+      <p class="section-sub">Reach us any way that's convenient — we usually reply within minutes during office hours.</p>
+    </div>
+
+    <div class="contact-grid">
+      <div class="contact-info-card reveal">
+        <h3>Skip Mee Tours & Travels</h3>
+        <p>Your Journey. Our Responsibility.</p>
+
+        <div class="contact-row">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.79.47 3.47 1.29 4.93L2 22l5.31-1.39a9.9 9.9 0 0 0 4.73 1.2h.01c5.46 0 9.9-4.45 9.9-9.91C21.96 6.45 17.5 2 12.04 2z"/></svg>
+          <div><b>WhatsApp</b><a href="#" class="wa-open">Chat with us instantly</a></div>
+        </div>
+        <div class="contact-row">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          <div><b>Phone</b><a href="tel:+60111633169">01111633169</a></div>
+        </div>
+        <div class="contact-row">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="M22 6l-10 7L2 6"/></svg>
+          <div><b>Email</b><a href="mailto:info@skipmeetours.com">info@skipmeetours.com</a></div>
+        </div>
+        <div class="contact-row">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 6-9 12-9 12s-9-6-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <div><b>Location</b><span>Kuala Lumpur, Malaysia</span></div>
+        </div>
+        <div class="contact-row">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+          <div><b>Office Hours</b><span>Daily, 10:00 AM – 8:00 PM (Malaysia Time)</span></div>
+        </div>
+
+        <div class="social-row">
+          <a href="#" class="social-btn" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.7"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+          <a href="#" class="social-btn" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.7"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg></a>
+          <a href="#" class="social-btn" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.7"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/></svg></a>
+          <a href="#" class="social-btn" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.7"><rect x="2" y="5" width="20" height="14" rx="4"/><path d="M10 9l5 3-5 3z"/></svg></a>
+        </div>
+
+        <div class="map-embed">
+          <iframe src="https://www.google.com/maps?q=Kuala+Lumpur,Malaysia&output=embed" loading="lazy" title="Skip Mee Tours & Travels location map"></iframe>
+        </div>
+      </div>
+
+      <form class="contact-form reveal" id="contactForm">
+        <div class="form-grid">
+          <div class="form-field"><label for="fName">Name</label><input type="text" id="fName" required placeholder="Your full name"></div>
+          <div class="form-field"><label for="fPhone">Phone / WhatsApp</label><input type="tel" id="fPhone" required placeholder="+60 1X XXX XXXX"></div>
+          <div class="form-field"><label for="fEmail">Email</label><input type="email" id="fEmail" required placeholder="you@example.com"></div>
+          <div class="form-field">
+            <label for="fService">Service Required</label>
+            <select id="fService" required>
+              <option value="">Select a service</option>
+              <option>Air Ticket</option><option>Visa Processing</option><option>Hotel Reservation</option>
+              <option>Car Rental</option><option>Airport Transfer</option><option>Tour Package</option>
+              <option>Student Consultancy</option><option>Courier Service</option>
+            </select>
+          </div>
+          <div class="form-field full"><label for="fDest">Travel Destination</label><input type="text" id="fDest" placeholder="e.g. Malaysia, Dhaka, Dubai..."></div>
+          <div class="form-field full"><label for="fMsg">Message</label><textarea id="fMsg" placeholder="Tell us a little more about what you need..."></textarea></div>
+        </div>
+        <button type="submit" class="btn btn-navy" style="width:100%;">Send Enquiry</button>
+        <div class="form-msg" id="formMsg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg><span>Thanks — your enquiry has been received. We'll reach out shortly.</span></div>
+      </form>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#home" class="logo">
+          <span class="plane-mark"><svg viewBox="0 0 24 24"><path d="M21 16v-2l-8-5V3.5a1.5 1.5 0 0 0-3 0V9l-8 5v2l8-2.5V19l-2.5 1.5V22l4-1 4 1v-1.5L13 19v-5.5l8 2.5z"/></svg></span>
+          <span>Skip Mee <em>Tours</em></span>
+        </a>
+        <p>Your Journey. Our Responsibility.</p>
+        <div class="social-row">
+          <a href="#" class="social-btn" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.7"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+          <a href="#" class="social-btn" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.7"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg></a>
+          <a href="#" class="social-btn" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.7"><rect x="2" y="5" width="20" height="14" rx="4"/><path d="M10 9l5 3-5 3z"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <h4>Quick Links</h4>
+        <ul class="footer-links">
+          <li><a href="#services">Services</a></li>
+          <li><a href="#destinations">Destinations</a></li>
+          <li><a href="#student">Student Consultancy</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Services</h4>
+        <ul class="footer-links">
+          <li><a href="#services">Air Tickets</a></li>
+          <li><a href="#services">Visa Processing</a></li>
+          <li><a href="#services">Tour Packages</a></li>
+          <li><a href="#services">Courier Service</a></li>
+        </ul>
+      </div>
+      <div class="footer-contact">
+        <h4>Contact</h4>
+        <p><b>Office Hours:</b><br>Daily, 10:00 AM – 8:00 PM (Malaysia Time)</p>
+        <p><b>Emergency:</b><br><a href="tel:+60111633169">01111633169</a></p>
+        <p><b>Email:</b><br><a href="mailto:info@skipmeetours.com">info@skipmeetours.com</a></p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span id="year"></span> Skip Mee Tours & Travels. All rights reserved.</span>
+      <span>Kuala Lumpur, Malaysia</span>
+    </div>
+  </div>
+</footer>
+
+<a href="#" class="wa-float wa-open" aria-label="Chat with us on WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.79.47 3.47 1.29 4.93L2 22l5.31-1.39a9.9 9.9 0 0 0 4.73 1.2h.01c5.46 0 9.9-4.45 9.9-9.91C21.96 6.45 17.5 2 12.04 2zm5.86 14.02c-.25.7-1.44 1.34-1.99 1.42-.51.08-1.15.11-1.86-.12-.43-.14-.98-.32-1.68-.63-2.97-1.28-4.91-4.26-5.06-4.46-.15-.2-1.21-1.61-1.21-3.07 0-1.46.77-2.18 1.04-2.48.27-.3.6-.37.8-.37.2 0 .4 0 .58.01.19.01.44-.07.68.53.25.6.85 2.08.92 2.23.07.15.12.32.02.52-.1.2-.15.32-.3.49-.15.17-.31.38-.44.51-.15.15-.3.31-.13.61.17.3.75 1.25 1.62 2.03 1.11 1 2.05 1.31 2.35 1.46.3.15.48.13.65-.07.17-.2.73-.86.93-1.16.2-.3.4-.24.66-.14.27.1 1.72.82 2.01.97.3.15.49.22.56.35.07.13.07.75-.18 1.44z"/></svg>
+</a>
+
+<div class="mobile-sticky-cta">
+  <a href="tel:+60111633169" class="btn btn-outline" style="border-color:rgba(255,255,255,.3);color:#fff;">Call Now</a>
+  <a href="#" class="btn btn-gold wa-open">WhatsApp Us</a>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+(function(){
+  "use strict";
+
+  /* ---------- Config ---------- */
+  var WA_NUMBER = "60111633169";
+  var WA_MESSAGE = "Assalamu Alaikum, I would like to know more about your travel services.";
+
+  /* ---------- WhatsApp links ---------- */
+  var waUrl = "https://wa.me/" + WA_NUMBER + "?text=" + encodeURIComponent(WA_MESSAGE);
+  document.querySelectorAll(".wa-open").forEach(function(el){
+    el.setAttribute("href", waUrl);
+    el.setAttribute("target", "_blank");
+    el.setAttribute("rel", "noopener");
+  });
+
+  /* ---------- Sticky Navbar ---------- */
+  var navbar = document.getElementById("navbar");
+  function onScroll(){
+    if(window.scrollY > 40){ navbar.classList.add("scrolled"); }
+    else{ navbar.classList.remove("scrolled"); }
+  }
+  window.addEventListener("scroll", onScroll, {passive:true});
+  onScroll();
+
+  /* ---------- Mobile Menu ---------- */
+  var navToggle = document.getElementById("navToggle");
+  var mobileMenu = document.getElementById("mobileMenu");
+  var mobileMenuClose = document.getElementById("mobileMenuClose");
+  function openMenu(){ mobileMenu.classList.add("open"); document.body.style.overflow="hidden"; }
+  function closeMenu(){ mobileMenu.classList.remove("open"); document.body.style.overflow=""; }
+  navToggle.addEventListener("click", openMenu);
+  mobileMenuClose.addEventListener("click", closeMenu);
+  mobileMenu.querySelectorAll("a:not(.wa-open)").forEach(function(a){ a.addEventListener("click", closeMenu); });
+
+  /* ---------- Scroll Reveal ---------- */
+  var revealEls = document.querySelectorAll(".reveal, .reveal-scale");
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){
+        entry.target.classList.add("in-view");
+        io.unobserve(entry.target);
+      }
+    });
+  }, {threshold:0.15, rootMargin:"0px 0px -60px 0px"});
+  revealEls.forEach(function(el){ io.observe(el); });
+
+  /* ---------- Animated Counters ---------- */
+  function animateCounter(el){
+    var target = parseInt(el.getAttribute("data-count"), 10) || 0;
+    var duration = 1600;
+    var start = null;
+    function step(ts){
+      if(!start) start = ts;
+      var progress = Math.min((ts - start) / duration, 1);
+      var eased = 1 - Math.pow(1 - progress, 3);
+      var val = Math.floor(eased * target);
+      el.textContent = val.toLocaleString();
+      if(progress < 1){ requestAnimationFrame(step); }
+      else{ el.textContent = target.toLocaleString(); }
+    }
+    requestAnimationFrame(step);
+  }
+  var counters = document.querySelectorAll(".counter");
+  var counterIO = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){
+        animateCounter(entry.target);
+        counterIO.unobserve(entry.target);
+      }
+    });
+  }, {threshold:0.5});
+  counters.forEach(function(c){ counterIO.observe(c); });
+
+  /* ---------- How It Works: line fill ---------- */
+  var stepsWrap = document.getElementById("stepsWrap");
+  var stepsLineFill = document.getElementById("stepsLineFill");
+  if(stepsWrap){
+    var stepsIO = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          stepsLineFill.style.width = "100%";
+          stepsIO.unobserve(entry.target);
+        }
+      });
+    }, {threshold:0.3});
+    stepsIO.observe(stepsWrap);
+  }
+
+  /* ---------- Tourist Spots Tabs ---------- */
+  var tabs = document.querySelectorAll(".spot-tab");
+  var tracks = document.querySelectorAll(".spots-track-wrap");
+  tabs.forEach(function(tab){
+    tab.addEventListener("click", function(){
+      tabs.forEach(function(t){ t.classList.remove("active"); });
+      tracks.forEach(function(t){ t.classList.remove("active"); });
+      tab.classList.add("active");
+      var country = tab.getAttribute("data-country");
+      document.querySelector('.spots-track-wrap[data-country="'+country+'"]').classList.add("active");
+    });
+  });
+  document.getElementById("spotsPrev").addEventListener("click", function(){
+    var active = document.querySelector(".spots-track-wrap.active .spots-track");
+    active.scrollBy({left:-290, behavior:"smooth"});
+  });
+  document.getElementById("spotsNext").addEventListener("click", function(){
+    var active = document.querySelector(".spots-track-wrap.active .spots-track");
+    active.scrollBy({left:290, behavior:"smooth"});
+  });
+
+  /* ---------- Testimonials Carousel ---------- */
+  var testiTrack = document.getElementById("testiTrack");
+  var testiCards = testiTrack.querySelectorAll(".testi-card");
+  var testiDotsWrap = document.getElementById("testiDots");
+  testiCards.forEach(function(_, i){
+    var dot = document.createElement("button");
+    dot.className = "testi-dot" + (i === 0 ? " active" : "");
+    dot.setAttribute("aria-label", "Go to testimonial " + (i+1));
+    dot.addEventListener("click", function(){
+      testiCards[i].scrollIntoView({behavior:"smooth", inline:"start", block:"nearest"});
+    });
+    testiDotsWrap.appendChild(dot);
+  });
+  var testiDots = testiDotsWrap.querySelectorAll(".testi-dot");
+  var testiObs = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      var idx = Array.prototype.indexOf.call(testiCards, entry.target);
+      if(entry.isIntersecting && entry.intersectionRatio > 0.6){
+        testiDots.forEach(function(d){ d.classList.remove("active"); });
+        if(testiDots[idx]) testiDots[idx].classList.add("active");
+      }
+    });
+  }, {root:testiTrack, threshold:[0.6]});
+  testiCards.forEach(function(c){ testiObs.observe(c); });
+
+  var testiPaused = false;
+  testiTrack.addEventListener("mouseenter", function(){ testiPaused = true; });
+  testiTrack.addEventListener("mouseleave", function(){ testiPaused = false; });
+  testiTrack.addEventListener("touchstart", function(){ testiPaused = true; }, {passive:true});
+  setInterval(function(){
+    if(testiPaused) return;
+    var cardWidth = testiCards[0].getBoundingClientRect().width + 22;
+    var atEnd = testiTrack.scrollLeft + testiTrack.clientWidth >= testiTrack.scrollWidth - 10;
+    if(atEnd){ testiTrack.scrollTo({left:0, behavior:"smooth"}); }
+    else{ testiTrack.scrollBy({left:cardWidth, behavior:"smooth"}); }
+  }, 4800);
+
+  /* ---------- Contact Form ---------- */
+  var form = document.getElementById("contactForm");
+  var formMsg = document.getElementById("formMsg");
+  form.addEventListener("submit", function(e){
+    e.preventDefault();
+    formMsg.classList.add("show");
+    showToast("Enquiry sent — thank you!");
+    form.reset();
+    setTimeout(function(){ formMsg.classList.remove("show"); }, 6000);
+  });
+
+  /* ---------- Toast ---------- */
+  var toast = document.getElementById("toast");
+  var toastTimer;
+  function showToast(msg){
+    toast.textContent = msg;
+    toast.classList.add("show");
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function(){ toast.classList.remove("show"); }, 3200);
+  }
+
+  /* ---------- Hero Particles ---------- */
+  var particleWrap = document.getElementById("particles");
+  if(particleWrap && !window.matchMedia("(prefers-reduced-motion: reduce)").matches){
+    for(var i=0; i<16; i++){
+      var p = document.createElement("span");
+      p.className = "particle";
+      var size = 2 + Math.random()*3;
+      p.style.width = size+"px";
+      p.style.height = size+"px";
+      p.style.left = Math.random()*100+"%";
+      p.style.top = 40+Math.random()*55+"%";
+      p.style.animationDuration = (10+Math.random()*14)+"s";
+      p.style.animationDelay = (Math.random()*14)+"s";
+      particleWrap.appendChild(p);
+    }
+  }
+
+  /* ---------- Button hover glow position ---------- */
+  document.querySelectorAll(".btn").forEach(function(btn){
+    btn.addEventListener("mousemove", function(e){
+      var r = btn.getBoundingClientRect();
+      btn.style.setProperty("--x", ((e.clientX-r.left)/r.width*100)+"%");
+      btn.style.setProperty("--y", ((e.clientY-r.top)/r.height*100)+"%");
+    });
+  });
+
+  /* ---------- Footer year ---------- */
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+})();
+</script>
 </body>
 </html>
